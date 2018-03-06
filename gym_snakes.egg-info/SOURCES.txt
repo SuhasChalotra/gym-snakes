@@ -1,6 +1,0 @@
-README.md
-gym_snakes.egg-info/PKG-INFO
-gym_snakes.egg-info/SOURCES.txt
-gym_snakes.egg-info/dependency_links.txt
-gym_snakes.egg-info/requires.txt
-gym_snakes.egg-info/top_level.txt
