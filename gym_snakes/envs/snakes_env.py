@@ -1,207 +1,359 @@
 import gym
-
 from gym import spaces
-from gym.utils import seeding
+from gym.envs.classic_control import rendering
+from collections import deque
+import random as rd
 import numpy as np
 from copy import deepcopy
-import pygame
-import random as rd
+import operator
 
-DIR_NORTH = 0
-DIR_EAST = 1
-DIR_SOUTH = 2
-DIR_WEST = 3
+def add_tup(a,b):
+    return tuple(map(operator.add, a, b))
 
-#TODO Make relevant params priv & use set/getter funcs instd
+def action_to_direction(act):
+    if act == 1:
+        return Direction.UP
+    if act == 2:
+        return Direction.RIGHT
+    if act == 3:
+        return Direction.DOWN
+    if act == 4:
+        return Direction.LEFT
+
+class Direction(object):
+    UP = (0, -1)
+    RIGHT = (1, 0)
+    DOWN =(0, 1)
+    LEFT = (-1, 0)
+    LIST = [UP, RIGHT, DOWN, LEFT]
+
+    def get_opposite(self,direction):
+        if direction == self.UP:
+            return self.DOWN
+        if direction == self.DOWN:
+            return self.UP
+        if direction == self.LEFT:
+            return self.RIGHT
+        if direction == self.RIGHT:
+            return self.LEFT
+        else:
+            return None
+
+
+
+
+# To be used more TODO
+class Rewards(object):
+    food_reward = 5
+
 
 class SnakesEnv(gym.Env):
-    metadata = {'render.modes': ['human']}
+    metadata = {'render.modes':['human']}
 
     class Snake:
-        snake_id_counter = 0
-
-        """Defining a new class which is a linked list implementation with 
-                    specific functions and parameters for the snake class         
-                    """
-
-        class SnakeLink:
-            def __init__(self, x_pos, y_pos, next_link=None, link_dimension=20):
-                self.xPos = x_pos
-                self.yPos = y_pos
-                self.next = next_link
-                self.link_dimension = link_dimension
-
-            def has_collided(self, other):
-                if np.abs(self.xPos - other.xPos) < self.link_dimension and \
-                        np.abs(self.yPos - other.yPos) < self.link_dimension:
-                    return True
-                else:
-                    return False
-
-        # Ending of SnakeLink
-
-        def __init__(self, x_in, y_in, block_size, direction=DIR_NORTH, length_in=3):
-            self.length = length_in
+        def __init__(self,loc_tuple, direction=Direction.UP, length=3):
+            self.body = deque()
             self.direction = direction
-            self.block_size = block_size
-            self.color = tuple(rd.randint(0, 255) for _ in range(3))
-            self.snake_id_counter += 1
-            self.id = "{0}".format(self.snake_id_counter)
+            self.length = length
+            self._alive_status = True
+            self.to_be_rewarded = 0
+            self.total_reward = 0
+            self.temp_head = None
+            self.create_body(loc_tuple,self.direction)
 
-            self.headPos = self.SnakeLink(x_pos=x_in, y_pos=y_in, link_dimension=self.block_size)
-            curr = self.headPos
+        def is_alive(self):
+            return self._alive_status
 
-            for i in range(length_in):
-                if self.direction == DIR_NORTH:
-                    x_in -= self.block_size
-                elif self.direction == DIR_EAST:
-                    y_in -= self.block_size
-                elif self.direction == DIR_SOUTH:
-                    x_in += self.block_size
-                elif self.direction == DIR_WEST:
-                    y_in += self.block_size
+        def get_head(self):
+            return self.body[0]
 
-                curr.next = self.SnakeLink(x_pos=x_in, y_pos=y_in, link_dimension=self.block_size)
-                curr = curr.next
+        def snake_collider(self, other_snake):
 
+            if id(self)==id(other_snake):
+                for piece in other_snake.body[1:]:
+                    if piece==self.get_head():
+                        return True
 
-        """Since our Snake class is stored as a linked list, we only need to pop the tail and move it 
-        to where the head should have been. So we write the following two functions :One find where the 
-         snake moves to and the Second one to move the tail of the snake link as the head"""
+            else:
 
-        def find_head_spot(self, action):
-            if action == DIR_NORTH:
-                if self.direction == DIR_EAST or self.direction == DIR_WEST:
-                    self.direction = DIR_NORTH
+                for piece in other_snake.body:
+                    if piece==self.get_head():
+                        return True
+            return False
+        def create_body(self,position, direction_in):
+            # Change the direction because the snake needs to be drawn in the opposite dir
+            # than it's facing
+            direction = Direction().get_opposite(direction=direction_in)
 
-            elif action == DIR_EAST:
-                if self.direction == DIR_NORTH or self.direction == DIR_SOUTH:
-                    self.direction = DIR_EAST
-
-            elif action == DIR_SOUTH:
-                if self.direction == DIR_EAST or self.direction == DIR_WEST:
-                    self.direction = DIR_SOUTH
-
-            elif action == DIR_WEST:
-                if self.direction == DIR_NORTH or self.direction == DIR_SOUTH:
-                    self.direction = DIR_WEST
-
-        def move_head(self, action):
-            prev = self.headPos
-            curr = prev.next
-
-            # Loop to find the last tail piece(curr) and the second last tail piece(prev)
-            while curr.next:
-                prev = curr
-                curr = curr.next
-            # Making prev the new tail and keeping curr to
-            prev.next = None
+            #Construct the rest of the snake
+            for _ in range(self.length):
+                if len(self.body) < 1:
+                    self.body.append(position)
+                else:
+                    temp = add_tup(self.body[len(self.body) - 1],direction)
+                    self.body.append(temp)
 
 
+        """
+        These three fucntions are called on every snake for movement during step phase of the Env        
+        """
+        def get_new_direction(self, action):
+            if self.direction==Direction.LEFT or self.direction==Direction.RIGHT:
+                if action in [1,3]:
+                    self.direction = action_to_direction(action)
+            if self.direction==Direction.UP or self.direction==Direction.DOWN:
+                if action in [2,4]:
+                    self.direction = action_to_direction(action)
 
-            # Calling the function written above to change the direction of snake according
-            # to action by user or agent
-            self.find_head_spot(action)
+        def get_new_head(self):
+            self.temp_head = add_tup(self.get_head(), self.direction)
 
-            # Set the position of the old tail to the current head and then "move" the snake
-            # according to action
-            curr.x_pos = self.headPos.x_pos
-            curr.y_pos = self.headPos.y_pos
+        def move_new_head(self):
+            if not self.is_alive():
+                self.temp_head = None
+                return
+            elif self.to_be_rewarded:
+                self.total_reward += self.to_be_rewarded
+                self.to_be_rewarded = 0
+                self.length += 1
+                self.body.appendleft(self.temp_head)
+                self.temp_head = None
+            else:
+                self.body.pop()
+                self.body.appendleft(self.temp_head)
+                self.temp_head = None
 
-            if self.direction == DIR_NORTH:
-                curr.x_pos -= self.block_size
-            elif self.direction == DIR_EAST:
-                curr.y_pos -= self.block_size
-            elif self.direction == DIR_SOUTH:
-                curr.x_pos += self.block_size
-            elif self.direction == DIR_WEST:
-                curr.y_pos += self.block_size
+        """
+        This function will check for any head collisions
+        """
+        def head_collision_check(self,other_snake):
+            test = self.temp_head
+            body = other_snake.body
+            for piece in body:
+                if piece==test:
+                    self._alive_status=False
+                    print("1 was changed")
+                    return True
+            return False
 
-            curr.next = self.headPos # Set new head
-            self.headPos = curr
 
-            def generate_snake():
-                pass # TODO
 
-            """Checks if the head of the snake collided with anything, or good or bad
-            Returns -1 if dead, 0 if nothing and 1 if reward
-            """
-            def head_collision_check(self, other):
-                pass # TODO
 
-    """
-    
-    """
-    def __init__(self, num_snakes=2, food_abund_factor=1.5, window_size_factor=15, delta_size=20,length=3):
-        self.game_on = True
-        self.num_snakes = num_snakes
-        self.num_fruits = np.ceil(num_snakes*food_abund_factor)
-        self.window_size = window_size_factor*delta_size
-        self.delta_size = delta_size
-        self.length = length
+    def __init__(self):
         self.snakes = []
-        self.food = []
-        self.screen = None
-        self.food_surfaces = []
-        self.snake_surfaces = []
+        self.food_list = []
+        self.empty = set()
+        self.snake_init_length = 0
+        self.num_snakes = 0
+        self.food_ratio = 1
+        self.num_food = self.num_snakes* self.food_ratio
+        self.block_num = 0
+        self.block_size = 0
+        self.game_windows = None
+        self.game_running = False
+        self.reward_range=(-50, 50)
 
-        # Now defining some spaces for the Gym Env
-        self.observation_space
-        self.reward_range
-        self.action_space = spaces.MultiDiscrete
+    def create_snake_from_empty(self):
+        pos_tuple = rd.choice(list(self.empty))
+        dir = rd.choice(Direction.LIST)
+        snake = self.Snake(pos_tuple,direction=dir)
 
+        while not self._is_valid(snake):
+            pos_tuple = rd.choice(list(self.empty))
+            dir = rd.choice(Direction.LIST)
+            snake = self.Snake(pos_tuple,direction=dir)
 
-    def _step(self, action):
-        obs = []
+        # Remove blocks from empty
+        for piece in snake.body:
+            self.empty.remove(piece)
 
-        # TODO
-    def _render(self, mode='human', close=False):
-        self.pygame_init()
-        self.generate_background()
-        self.generate_snakes()
+        return deepcopy(snake)
+
+    def populate_arrays(self):
+        # Populate the empty
+        self.empty = set()
+        for x in range(self.block_num):
+            for y in range(self.block_num):
+                self.empty.add((x, y))
+
+        # Populate snakes
+        self.snakes = []
+        for snake in range(self.num_snakes):
+            snake = self.create_snake_from_empty()
+            self.snakes.append(snake)
+
+        self.food_list = []
+        # Populate food_list
         self.generate_food()
-        pygame.display.update()
-
-    def _reset(self):
 
 
 
+    """
+        This function is called to test whether the current chosen body
+        is under any collisions with other objects.
+        Args:
 
-    def _seed(self, seed=None):
-        pass# TODO
-    def _close(self):
-        pygame.quit()
+        Returns:
+            truth_value(bool): weather the current snake is valid or not
+
+    """
+    def _is_valid(self,snake):
+        # First we check is any of co-ordinates are negative
+        for piece in snake.body:
+            if piece[0]<0 or piece[1]<0 :
+                return False
+            if piece[0]>=self.block_num or  piece[1]>=self.block_num :
+                return False
 
 
+        # Check collision with other snakes:
+        for other_snake in self.snakes :
+            if snake.snake_collider(other_snake):
+                return False
+
+        return True
+
+    def reset(self,num_snakes=4, snake_init_length=5, food_ratio=3, block_num=30, block_size=20):
+        self.num_snakes = num_snakes
+        self.snake_init_length = snake_init_length
+        self.food_ratio = food_ratio
+        self.num_food = int(np.ceil(self.num_snakes * self.food_ratio))
+        self.block_num = block_num
+        self.block_size = block_size
+        self.action_space = spaces.MultiDiscrete([[0, 4]] * num_snakes)
+        self.observation_space = spaces.Box(-5, 5, (self.block_num, self.block_num))
+        self.populate_arrays()
+        self.game_running = True
 
 
-    def pygame_init(self):
-        pygame.init()
-        self.screen = pygame.display.set_mode((self.window_size, self.window_size),
-                                              pygame.HWSURFACE)
-        for index, snake in enumerate(self.s)
+        return self.generate_obs()
+
+    def step(self, actions):
+        rewards = []
+
+        for index, action in enumerate(actions):
+            if self.snakes[index].is_alive():
+                self.snakes[index].get_new_direction(action)
+                self.snakes[index].get_new_head()
+        self.check_snake_collisions()
+        self.check_wall_collisions()
+        self.check_for_food_reward(rewards)
+        for snake in self.snakes:
+            snake.move_new_head()
+        self.generate_food()
+
+        done = not self.game_running
+
+        print([(self.snakes[i].body,self.snakes[i].is_alive()) for i in range(len(self.snakes))])
+
+        return self.generate_obs(), rewards, done, {}
+
+    def render(self, mode='human', close=False):
+        window_size = self.block_num*self.block_size
+
+        if self.game_windows is None:
+            self.game_windows = rendering.Viewer(window_size,window_size)
+
+        self.render_snakes(self.game_windows)
+        self.render_food(self.game_windows)
+
+        return self.game_windows.render(return_rgb_array=mode=='rgb_array')
 
 
-    def generate_background(self):
-        pass # TODO
+    def check_snake_collisions(self):
+        for snake in self.snakes:
+            if not snake.is_alive():
+                pass
+            for other_snake in self.snakes:
+                if snake.head_collision_check(other_snake):
+                    self.kill_snake(snake)
 
-    def generate_snakes(self):
-        x_pos, y_pos = rd.randint(self.length+1, )
-        for i in range(self.num_snakes):
-            self.snakes.append(self.Snake())
-            # TODO
+    def check_wall_collisions(self):
+        for snake in self.snakes:
+            if snake.is_alive():
+                x, y = snake.temp_head
 
-    def generate_food(self):
-        pass #TODO
+                if x >= self.block_num or y >= self.block_num or x < 0 or y < 0:
+                    snake._alive_status = False
+                    self.kill_snake(snake)
+
+    def check_for_food_reward(self,rewards):
+        for snake in self.snakes:
+            if snake.is_alive():
+                head = snake.get_head()
+                for food in self.food_list:
+                    if head==food:
+                        snake.to_be_rewarded = Rewards.food_reward
+                        self.food_list.remove(food)
+
+            rewards.append(snake.to_be_rewarded)
 
     def generate_obs(self):
-        pass
+        obs = []
+        gen_snake_obs = np.zeros([self.block_num, self.block_num])
+        for snake in self.snakes:
+            if snake.is_alive():
+                for piece in snake.body:
+                    gen_snake_obs[piece] = -1
 
+        for food in self.food_list:
+            gen_snake_obs[food] = 5
 
+        for snake in self.snakes:
+            snake_copy = deepcopy(gen_snake_obs)
+            for piece in snake.body:
+                snake_copy[piece] = 1
+            obs.append(snake_copy)
 
+        return obs
 
+    def kill_snake(self,snake):
+        if not snake.is_alive():
+            for piece in snake.body:
+                self.empty.add(piece)
 
+        for snake in self.snakes:
+            if snake.is_alive():
+                return
+            else:
+                pass
+        self.game_running = False
 
+    def generate_food(self):
+        num_to_make = self.num_food - len(self.food_list)
+        while num_to_make:
+            if num_to_make > len(self.empty):
+                self.game_running = False
+                return
 
+            food = rd.choice(list(self.empty))
+            self.empty.remove(food)
+            self.food_list.append(food)
 
+            num_to_make = self.num_food - len(self.food_list)
+
+    def render_snakes(self,viewer):
+        for snake in self.snakes:
+            head = snake.get_head()
+            if snake.is_alive():
+                for x,y in snake.body:
+                    if (x,y)==head:
+                        self.draw(x, y, viewer, (0,0,0))
+                    else:
+                        self.draw(x, y, viewer, (0, 4, 0))
+
+    def render_food(self,viewer):
+        for x,y in self.food_list:
+            self.draw(x, y, viewer,(4,0,0))
+
+    def draw(self, x, y, viewer,color):
+        left = x * self.block_size
+        right = (x + 1) * self.block_size
+        top = y * self.block_size
+        bottom = (y + 1) * self.block_size
+
+        square = rendering.FilledPolygon([(left,bottom),(left,top),(right,top),(right,bottom)])
+        r,g,b = color
+        square.set_color(r, g, b)
+        viewer.add_onetime(square)
 
