@@ -39,9 +39,6 @@ class Direction(object):
         else:
             return None
 
-
-
-
 # To be used more TODO
 class Rewards(object):
     food_reward = 5
@@ -137,9 +134,6 @@ class SnakesEnv(gym.Env):
                     return True
             return False
 
-
-
-
     def __init__(self):
         self.snakes = []
         self.food_list = []
@@ -217,7 +211,7 @@ class SnakesEnv(gym.Env):
 
         return True
 
-    def reset(self,num_snakes=20, snake_init_length=5, food_ratio=7, block_num=50, block_size=10):
+    def reset(self,num_snakes=10, snake_init_length=3, food_ratio=3, block_num=100, block_size=10):
         self.num_snakes = num_snakes
         self.snake_init_length = snake_init_length
         self.food_ratio = food_ratio
@@ -360,4 +354,3 @@ class SnakesEnv(gym.Env):
         r,g,b = color
         square.set_color(r, g, b)
         viewer.add_onetime(square)
-
