@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cf93737d-e878-4be7-b568-a24c6ad96680" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/gym_snakes.egg-info/PKG-INFO" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/gym_snakes.egg-info/SOURCES.txt" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/gym_snakes.egg-info/dependency_links.txt" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/gym_snakes.egg-info/requires.txt" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/gym_snakes.egg-info/top_level.txt" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/gym_snakes/envs/SimpleTest.py" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Testing the ENV.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/gym_snakes/envs/SimpleTest.py" afterPath="$PROJECT_DIR$/gym_snakes/envs/SimpleTest.py" />
       <change beforePath="$PROJECT_DIR$/gym_snakes/envs/snakes_env.py" afterPath="$PROJECT_DIR$/gym_snakes/envs/snakes_env.py" />
-      <change beforePath="$PROJECT_DIR$/setup.py" afterPath="$PROJECT_DIR$/setup.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,11 +15,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="snakes_env.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="snakes_env.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/gym_snakes/envs/snakes_env.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="98">
-              <caret line="215" column="94" lean-forward="false" selection-start-line="215" selection-start-column="94" selection-end-line="215" selection-end-column="94" />
+            <state relative-caret-position="203">
+              <caret line="202" column="82" lean-forward="false" selection-start-line="202" selection-start-column="82" selection-end-line="202" selection-end-column="82" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -38,7 +30,7 @@
       <file leaf-file-name="box.py" pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/anaconda3/envs/universe/lib/python3.5/site-packages/gym/spaces/box.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
+            <state relative-caret-position="414">
               <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
@@ -50,7 +42,7 @@
       <file leaf-file-name="numeric.py" pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/.local/lib/python3.5/site-packages/numpy/core/numeric.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
+            <state relative-caret-position="34776">
               <caret line="1952" column="0" lean-forward="false" selection-start-line="1952" selection-start-column="0" selection-end-line="1952" selection-end-column="0" />
               <folding />
             </state>
@@ -60,7 +52,7 @@
       <file leaf-file-name="multi_discrete.py" pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/anaconda3/envs/universe/lib/python3.5/site-packages/gym/spaces/multi_discrete.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
+            <state relative-caret-position="486">
               <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
               <folding />
             </state>
@@ -80,7 +72,7 @@
       <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/.local/lib/python3.5/site-packages/pkg_resources/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
+            <state relative-caret-position="42894">
               <caret line="2407" column="0" lean-forward="false" selection-start-line="2407" selection-start-column="0" selection-end-line="2407" selection-end-column="0" />
               <folding />
             </state>
@@ -90,7 +82,7 @@
       <file leaf-file-name="core.py" pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/anaconda3/envs/universe/lib/python3.5/site-packages/gym/core.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
+            <state relative-caret-position="3420">
               <caret line="190" column="0" lean-forward="false" selection-start-line="190" selection-start-column="0" selection-end-line="190" selection-end-column="0" />
               <folding />
             </state>
@@ -100,7 +92,7 @@
       <file leaf-file-name="registration.py" pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/anaconda3/envs/universe/lib/python3.5/site-packages/gym/envs/registration.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="335">
+            <state relative-caret-position="2862">
               <caret line="163" column="0" lean-forward="false" selection-start-line="163" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
               <folding />
             </state>
@@ -110,18 +102,18 @@
       <file leaf-file-name="closer.py" pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/anaconda3/envs/universe/lib/python3.5/site-packages/gym/utils/closer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="279">
+            <state relative-caret-position="936">
               <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SimpleTest.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SimpleTest.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/gym_snakes/envs/SimpleTest.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="180">
-              <caret line="10" column="21" lean-forward="false" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
+              <caret line="10" column="22" lean-forward="false" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -140,9 +132,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>kille</find>
-      <find>image_s</find>
-      <find>_dis</find>
       <find>color</find>
       <find>killed</find>
       <find>check_colli</find>
@@ -170,6 +159,9 @@
       <find>print({</find>
       <find>print([</find>
       <find>alive_s</find>
+      <find>snake</find>
+      <find>pr</find>
+      <find>print</find>
     </findStrings>
     <replaceStrings>
       <replace>self.size</replace>
@@ -200,16 +192,16 @@
         <option value="$PROJECT_DIR$/gym_snakes/envs/Keyboard.py" />
         <option value="$PROJECT_DIR$/setup.py" />
         <option value="$PROJECT_DIR$/gym_snakes/SimpleTest.py" />
-        <option value="$PROJECT_DIR$/gym_snakes/envs/snakes_env.py" />
         <option value="$PROJECT_DIR$/gym_snakes/envs/SimpleTest.py" />
+        <option value="$PROJECT_DIR$/gym_snakes/envs/snakes_env.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="65" />
-    <option name="y" value="-3" />
+    <option name="y" value="24" />
     <option name="width" value="1853" />
-    <option name="height" value="1076" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -227,8 +219,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -254,7 +246,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$USER_HOME$/PycharmProjects/Testing For Lizz" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="reference.idesettings.quicklists" />
   </component>
   <component name="RecentsManager">
@@ -363,17 +355,18 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13864629" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21020408" sideWeight="0.5040431" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23979057" sideWeight="0.49595687" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24134313" sideWeight="0.49568966" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24029382" sideWeight="0.49595687" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32948583" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291536" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38719833" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -411,11 +404,6 @@
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/gym_snakes/envs/snakes_env.py</url>
           <line>52</line>
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/gym_snakes/envs/snakes_env.py</url>
-          <line>234</line>
-          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
       <option name="time" value="3" />
@@ -562,7 +550,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3606">
           <caret line="487" column="8" lean-forward="false" selection-start-line="487" selection-start-column="8" selection-end-line="487" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -587,7 +574,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1170">
           <caret line="65" column="4" lean-forward="false" selection-start-line="65" selection-start-column="4" selection-end-line="65" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -595,23 +581,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="662">
           <caret line="281" column="0" lean-forward="false" selection-start-line="281" selection-start-column="0" selection-end-line="281" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gym_snakes/envs/og.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="21" lean-forward="false" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/gym_snakes/envs/og.py" />
     <entry file="file://$USER_HOME$/anaconda3/envs/universe/lib/python3.5/site-packages/gym/spaces/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
           <caret line="2" column="42" lean-forward="false" selection-start-line="2" selection-start-column="42" selection-end-line="2" selection-end-column="42" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -619,63 +596,31 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
           <caret line="5" column="6" lean-forward="false" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gym_snakes/envs/bad_Attempt.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="790">
-          <caret line="398" column="0" lean-forward="false" selection-start-line="398" selection-start-column="0" selection-end-line="398" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/gym_snakes/envs/bad_Attempt.py" />
     <entry file="file://$USER_HOME$/anaconda3/envs/universe/lib/python3.5/site-packages/gym/spaces/tuple_space.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
           <caret line="2" column="6" lean-forward="false" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gym_snakes/rando.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="11" lean-forward="false" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/gym_snakes/rando.py" />
     <entry file="file://$USER_HOME$/anaconda3/envs/universe/lib/python3.5/site-packages/gym/envs/classic_control/rendering.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="483">
           <caret line="239" column="9" lean-forward="false" selection-start-line="239" selection-start-column="9" selection-end-line="239" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Testing the ENV.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gym_snakes/envs/Keyboard.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="702">
-          <caret line="39" column="30" lean-forward="false" selection-start-line="39" selection-start-column="30" selection-end-line="39" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Testing the ENV.py" />
+    <entry file="file://$PROJECT_DIR$/gym_snakes/envs/Keyboard.py" />
     <entry file="file://$PROJECT_DIR$/gym_snakes/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
           <caret line="3" column="17" lean-forward="false" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -683,7 +628,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="248">
           <caret line="264" column="0" lean-forward="false" selection-start-line="264" selection-start-column="0" selection-end-line="264" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -691,7 +635,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="239">
           <caret line="4329" column="8" lean-forward="false" selection-start-line="4329" selection-start-column="8" selection-end-line="4329" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -705,7 +648,7 @@
     </entry>
     <entry file="file://$USER_HOME$/anaconda3/envs/universe/lib/python3.5/site-packages/gym/utils/closer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
+        <state relative-caret-position="936">
           <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
           <folding />
         </state>
@@ -713,7 +656,7 @@
     </entry>
     <entry file="file://$USER_HOME$/anaconda3/envs/universe/lib/python3.5/site-packages/gym/core.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
+        <state relative-caret-position="3420">
           <caret line="190" column="0" lean-forward="false" selection-start-line="190" selection-start-column="0" selection-end-line="190" selection-end-column="0" />
           <folding />
         </state>
@@ -721,7 +664,7 @@
     </entry>
     <entry file="file://$USER_HOME$/anaconda3/envs/universe/lib/python3.5/site-packages/gym/spaces/multi_discrete.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
+        <state relative-caret-position="486">
           <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
           <folding />
         </state>
@@ -729,7 +672,7 @@
     </entry>
     <entry file="file://$USER_HOME$/.local/lib/python3.5/site-packages/numpy/core/numeric.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
+        <state relative-caret-position="34776">
           <caret line="1952" column="0" lean-forward="false" selection-start-line="1952" selection-start-column="0" selection-end-line="1952" selection-end-column="0" />
           <folding />
         </state>
@@ -737,7 +680,7 @@
     </entry>
     <entry file="file://$USER_HOME$/anaconda3/envs/universe/lib/python3.5/site-packages/gym/spaces/box.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
+        <state relative-caret-position="414">
           <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
@@ -755,7 +698,7 @@
     </entry>
     <entry file="file://$USER_HOME$/.local/lib/python3.5/site-packages/pkg_resources/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
+        <state relative-caret-position="42894">
           <caret line="2407" column="0" lean-forward="false" selection-start-line="2407" selection-start-column="0" selection-end-line="2407" selection-end-column="0" />
           <folding />
         </state>
@@ -763,26 +706,26 @@
     </entry>
     <entry file="file://$USER_HOME$/anaconda3/envs/universe/lib/python3.5/site-packages/gym/envs/registration.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
+        <state relative-caret-position="2862">
           <caret line="163" column="0" lean-forward="false" selection-start-line="163" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gym_snakes/envs/snakes_env.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="215" column="94" lean-forward="false" selection-start-line="215" selection-start-column="94" selection-end-line="215" selection-end-column="94" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/gym_snakes/envs/SimpleTest.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
-          <caret line="10" column="21" lean-forward="false" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
+          <caret line="10" column="22" lean-forward="false" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gym_snakes/envs/snakes_env.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="202" column="82" lean-forward="false" selection-start-line="202" selection-start-column="82" selection-end-line="202" selection-end-column="82" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>

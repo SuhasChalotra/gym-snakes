@@ -75,10 +75,12 @@ class SnakesEnv(gym.Env):
                         return True
 
             else:
+                if other_snake.is_alive():
 
-                for piece in other_snake.body:
-                    if piece==self.get_head():
-                        return True
+                    for piece in other_snake.body:
+
+                        if piece==self.get_head():
+                            return True
             return False
         def create_body(self,position, direction_in):
             # Change the direction because the snake needs to be drawn in the opposite dir
@@ -132,7 +134,6 @@ class SnakesEnv(gym.Env):
             for piece in body:
                 if piece==test:
                     self._alive_status=False
-                    print("1 was changed")
                     return True
             return False
 
@@ -181,6 +182,8 @@ class SnakesEnv(gym.Env):
         for snake in range(self.num_snakes):
             snake = self.create_snake_from_empty()
             self.snakes.append(snake)
+            print(snake.body,snake.is_alive())
+        print("DONE!")
 
         self.food_list = []
         # Populate food_list
@@ -197,6 +200,7 @@ class SnakesEnv(gym.Env):
             truth_value(bool): weather the current snake is valid or not
 
     """
+    # TODO Fix Issue: does not check for collision of body during creation process
     def _is_valid(self,snake):
         # First we check is any of co-ordinates are negative
         for piece in snake.body:
@@ -213,7 +217,7 @@ class SnakesEnv(gym.Env):
 
         return True
 
-    def reset(self,num_snakes=4, snake_init_length=5, food_ratio=3, block_num=30, block_size=20):
+    def reset(self,num_snakes=20, snake_init_length=5, food_ratio=7, block_num=50, block_size=10):
         self.num_snakes = num_snakes
         self.snake_init_length = snake_init_length
         self.food_ratio = food_ratio
@@ -244,7 +248,6 @@ class SnakesEnv(gym.Env):
 
         done = not self.game_running
 
-        print([(self.snakes[i].body,self.snakes[i].is_alive()) for i in range(len(self.snakes))])
 
         return self.generate_obs(), rewards, done, {}
 
@@ -285,6 +288,7 @@ class SnakesEnv(gym.Env):
                     if head==food:
                         snake.to_be_rewarded = Rewards.food_reward
                         self.food_list.remove(food)
+                        self.empty.add(food)
 
             rewards.append(snake.to_be_rewarded)
 
