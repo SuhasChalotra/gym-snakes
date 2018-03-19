@@ -5,7 +5,7 @@ An environment that emulates the online multiplayer game of Slither.io
 ## Installation
 1. Clone the repo
 2. cd into gym-snakes and use pip install
-'$ pip install -e .' NOTE: I would recommend installling this to a conda venv
+`$ pip install -e .` NOTE: I would recommend installling this to a conda venv
 
 ## Common Problems
 1. Make sure you did a full install on the gym package (MujoCo can be ignored)
