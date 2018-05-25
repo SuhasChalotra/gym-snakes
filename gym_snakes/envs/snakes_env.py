@@ -64,7 +64,8 @@ class SnakesEnv(gym.Env):
         def get_head(self):
             return self.body[0]
 
-        def snake_collider(self, other_snake):
+
+        def snake_init_collider(self, other_snake):
 
             if id(self)==id(other_snake):
                 for piece in other_snake.body[1:]:
@@ -79,6 +80,8 @@ class SnakesEnv(gym.Env):
                         if piece==self.get_head():
                             return True
             return False
+        
+        
         def create_body(self,position, direction_in):
             # Change the direction because the snake needs to be drawn in the opposite dir
             # than it's facing
@@ -94,7 +97,7 @@ class SnakesEnv(gym.Env):
 
 
         """
-        These three fucntions are called on every snake for movement during step phase of the Env        
+        These three functions are called on every snake for movement during step phase of the Env        
         """
         def get_new_direction(self, action):
             if self.direction==Direction.LEFT or self.direction==Direction.RIGHT:
@@ -194,7 +197,6 @@ class SnakesEnv(gym.Env):
             truth_value(bool): weather the current snake is valid or not
 
     """
-    # TODO Fix Issue: does not check for collision of body during creation process
     def _is_valid(self,snake):
         # First we check is any of co-ordinates are negative
         for piece in snake.body:
@@ -203,10 +205,16 @@ class SnakesEnv(gym.Env):
             if piece[0]>=self.block_num or  piece[1]>=self.block_num :
                 return False
 
+        #Check for collisions with self
+        clean_body = set()
+        for body_part in snake.body:
+            clean_body.add(body_part)
+        if len(clean_body) != len(snake.body):
+            return False
 
         # Check collision with other snakes:
         for other_snake in self.snakes :
-            if snake.snake_collider(other_snake):
+            if snake.snake_init_collider(other_snake):
                 return False
 
         return True

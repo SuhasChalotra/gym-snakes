@@ -8,7 +8,7 @@ for i in range(10):
     env.reset()
     for t in range(1000):
         env.render()
-        time.sleep(.05)
+        time.sleep(.01)
         observation, reward, done, info = env.step(env.action_space.sample())
         if done:
             print('episode {} finished after {} timesteps'.format(i, t))
