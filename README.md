@@ -11,7 +11,4 @@ An environment that emulates the online multiplayer game of Slither.io
 1. Make sure you did a full install on the gym package (MujoCo can be ignored)
 2. If the gym-snakes import fails, make sure you have added the directory to PATH
 
-## ToDo
-1. Fix the collision checker that is called when snakes are created
-
 
