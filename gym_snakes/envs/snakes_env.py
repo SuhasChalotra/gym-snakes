@@ -64,9 +64,12 @@ class SnakesEnv(gym.Env):
         def get_head(self):
             return self.body[0]
 
-
         def snake_init_collider(self, other_snake):
-
+            """
+            Return True in case of a collision
+            :param other_snake:
+            :return:
+            """
             if id(self)==id(other_snake):
                 for piece in other_snake.body[1:]:
                     if piece==self.get_head():
@@ -74,11 +77,10 @@ class SnakesEnv(gym.Env):
 
             else:
                 if other_snake.is_alive():
-
-                    for piece in other_snake.body:
-
-                        if piece==self.get_head():
-                            return True
+                    for other_piece in other_snake.body:
+                        for my_piece in self.body:
+                            if my_piece==other_piece:
+                                return True
             return False
         
         
